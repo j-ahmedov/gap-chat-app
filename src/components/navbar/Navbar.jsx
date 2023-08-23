@@ -16,13 +16,13 @@ const Navbar = () => {
       <SearchBar />
       <div className="navbar-links-container">
         <Link to="/home">
-          <i class="fa-solid fa-house fa-xl"></i>
+          <i className="fa-solid fa-house fa-xl"></i>
         </Link>
         <Link to="/add">
-          <i class="fa-regular fa-square-plus fa-xl"></i>
+          <i className="fa-regular fa-square-plus fa-xl"></i>
         </Link>
         <Link to="/profile">
-          <i class="fa-regular fa-circle-user fa-xl"></i>
+          <i className="fa-regular fa-circle-user fa-xl"></i>
         </Link>
       </div>
     </div>
