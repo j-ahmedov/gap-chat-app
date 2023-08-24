@@ -1,24 +1,19 @@
-import axios from "axios";
-import { requestParams } from "../../constants/request_params";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../../components/context/UserContext";
+import { useNavigate } from 'react-router-dom'
+
 
 const Main = () => {
 
-  const [userData, setUserData] = useState({})
+  const {userData} = useContext(UserContext);
+  const tokenItem = localStorage.getItem('authToken');
+  const navigate = useNavigate()
 
   useEffect(() => {
-    const headers = {
-      'Authorization': `Token ${localStorage.getItem('authToken')}`
+    if (!tokenItem) {
+      navigate('/')
     }
-
-    axios.get(`${requestParams.url_template}/parse-token/`, {headers})
-    .then(response => {
-      setUserData(response.data)
-    })
-    .catch(error => {
-      console.log(error)
-    })
-  }, [])
+  })
 
   return (
     <div>

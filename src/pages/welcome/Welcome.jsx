@@ -1,13 +1,15 @@
 import "./Welcome.css";
 import "../../assets/styles/form.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { getToken } from "../../service/login";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../components/context/UserContext";
 
 const Welcome = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
+  const { refreshUserData } = useContext(UserContext);
 
   const handleUsernameInput = (e) => {
     setUsername(e.target.value);
@@ -23,6 +25,7 @@ const Welcome = () => {
       .then((response) => {
         if (response.request.status === 200) {
           localStorage.setItem('authToken', response.data.auth_token);
+          refreshUserData()
           navigate('/home')
         }
         console.log(response)
