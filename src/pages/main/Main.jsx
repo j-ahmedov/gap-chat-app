@@ -20,6 +20,7 @@ const Main = () => {
     <div>
       <div className="post-list-container"> 
         <Post />
+        <Post />
       </div>
     </div>
   )

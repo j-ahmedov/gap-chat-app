@@ -1,5 +1,8 @@
 .post-container {
-    background-color: pink;
+    height: fit-content;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
 }
 
 .post-container i {
@@ -7,8 +10,38 @@
 }
 
 .config-container {
-    padding: 5px 30px;
+    padding: 15px 30px;
+    height: fit-content;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.post-container .user-info {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.post-image-container {
+    height: 400px;
+}
+
+.post-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.post-icons-container {
+    padding: 10px 30px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-content-container {
+    text-align: start;
+    padding: 10px 30px;
 }

@@ -4,7 +4,7 @@ import Welcome from './pages/welcome/Welcome';
 import Register from './pages/signup/SignUp';
 import Main from './pages/main/Main';
 import WithNavbar from './components/WithNavbar';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { requestParams } from "./constants/request_params";
 import { UserContext } from './components/context/UserContext';
@@ -25,14 +25,10 @@ function App() {
       console.log(response.data)
     })
     .catch(error => {
-      console.log(error.response.data)
+      console.log(error.response)
       setUserData({})
     })
   }
-
-  useEffect(() => {
-    refreshUserData()
-  }, [])
 
   return (
     <div className="App">

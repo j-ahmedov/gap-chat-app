@@ -3,7 +3,6 @@ import "./Navbar.css";
 import SearchBar from "../search-bar/SearchBar";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
-import { requestParams } from "../../constants/request_params";
 import Avatar from "../avatar/Avatar";
 
 const Navbar = () => {
