@@ -16,15 +16,16 @@ function App() {
   const refreshUserData = () => {
 
     const headers = {
-      'Authorization': `Token ${localStorage.getItem('authToken')}`
+      'Authorization': `Token ${localStorage.getItem('authToken')}`,
     }
 
     axios.get(`${requestParams.url_template}/parse-token/`, {headers})
     .then(response => {
       setUserData(response.data)
+      console.log(response.data)
     })
     .catch(error => {
-      console.log(error)
+      console.log(error.response.data)
       setUserData({})
     })
   }

@@ -1,12 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import SearchBar from "../search-bar/SearchBar";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { requestParams } from "../../constants/request_params";
+import Avatar from "../avatar/Avatar";
 
 const Navbar = () => {
   const { userData } = useContext(UserContext);
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("authToken");
+    navigate("/");
+  };
+
+  console.log(userData)
 
   return (
     <div className="navbar">
@@ -27,19 +37,11 @@ const Navbar = () => {
           <i className="fa-regular fa-square-plus fa-xl"></i>
         </Link>
         <div className="user-container">
-          {userData.avatar ? (
-            <div className="image-container">
-              <img
-                src={`${requestParams.url_template}${userData.avatar}`}
-                alt="user avatar"              
-              />
-            </div>
-          ) : (
-            <Link to="/profile">
-              <i className="fa-regular fa-circle-user fa-xl"></i>
-            </Link>
-          )}
-          {userData.username}
+          <Avatar
+            img_source={userData.avatar}
+          />  
+          {userData.username ? <p>{userData.username}</p> : <p>no</p> }
+          <button onClick={logout}>Log out</button>
         </div>
       </div>
     </div>

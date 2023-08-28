@@ -1,0 +1,14 @@
+.post-container {
+    background-color: pink;
+}
+
+.post-container i {
+    color: rgb(61, 61, 61);
+}
+
+.config-container {
+    padding: 5px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

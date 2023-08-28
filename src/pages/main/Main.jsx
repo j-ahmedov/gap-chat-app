@@ -1,7 +1,8 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../components/context/UserContext";
 import { useNavigate } from 'react-router-dom'
-
+import Post from "../../components/post/Post";
+import './Main.css'
 
 const Main = () => {
 
@@ -17,11 +18,9 @@ const Main = () => {
 
   return (
     <div>
-      {userData.user_id}<br/>
-      {userData.username}<br/>
-      {userData.first_name}<br/>
-      {userData.last_name}<br/>
-      {userData.avatar}
+      <div className="post-list-container"> 
+        <Post />
+      </div>
     </div>
   )
 }
