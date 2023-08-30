@@ -1,41 +1,43 @@
-import { useContext } from "react";
+import { format } from "date-fns";
 import Avatar from "../avatar/Avatar";
-import { UserContext } from "../context/UserContext";
 import "./Post.css";
 
-const Post = () => {
-  const { userData } = useContext(UserContext);
+
+const Post = ({post}) => {
+
+  const date = new Date(post.published_at)
+  const formattedDate = format(date, 'dd MMM, yyyy', {timezone: 'UTC'})
 
   return (
     <div className="post-container">
       <div className="config-container">
         <div className="user-info">
-          <Avatar img_source={userData.avatar} />
-          {userData.username}
+          <Avatar img_source={post.user.avatar} />
+          {post.user.username}
         </div>
         <div>
-          <i class="fa-solid fa-ellipsis fa-xl"></i>
+          <i className="fa-solid fa-ellipsis fa-xl"></i>
         </div>
       </div>
       <hr style={{ width: "95%", height: "0.1px", margin: "0 auto" }} />
       <div className="post-content-container">
-        <h3>Title</h3>
-        <p>lorem ipsum dolor sit amet</p>
+        <h3>{post.title}</h3>
+        <p>{post.content}</p>
       </div>
       <div className="post-image-container">
         <img
-          src={process.env.PUBLIC_URL + "/images/r8-min.jpg"}
+          src={post.post_image}
           alt="post img"
         />
       </div>
       <div className="post-icons-container">
         <div style={{ display: "flex", gap: "10px" }}>
-          <i class="fa-regular fa-heart fa-xl"></i>
-          <i class="fa-regular fa-comment fa-xl"></i>
-          <i class="fa-regular fa-paper-plane fa-xl"></i>
+          <i className="fa-regular fa-heart fa-xl"></i>
+          <i className="fa-regular fa-comment fa-xl"></i>
+          <i className="fa-regular fa-paper-plane fa-xl"></i>
         </div>
         <div>
-          <i class="fa-regular fa-bookmark fa-xl"></i>
+          <i className="fa-regular fa-bookmark fa-xl"></i>
         </div>
       </div>
       <div
@@ -46,11 +48,11 @@ const Post = () => {
           gap: "50px",
         }}
       >
-        <p> likes</p>
-        <p> comments</p>
+        <p>{post.likes_count} likes</p>
+        <p>{post.comments_count} comments</p>
       </div>
       <div style={{padding: '5px 30px', display: 'flex', justifyContent: 'end'}}>
-        <p> 30 Aug, 2023</p>
+        <p>{formattedDate}</p>
       </div>
     </div>
   );

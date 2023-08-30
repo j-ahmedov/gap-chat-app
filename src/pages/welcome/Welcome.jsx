@@ -8,7 +8,8 @@ import { UserContext } from "../../components/context/UserContext";
 const Welcome = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate()
+  const [isLogin, setIsLogin] = useState(true);
+  const navigate = useNavigate();
   const { refreshUserData } = useContext(UserContext);
 
   const handleUsernameInput = (e) => {
@@ -24,14 +25,19 @@ const Welcome = () => {
     getToken(username, password)
       .then((response) => {
         if (response.request.status === 200) {
-          localStorage.setItem('authToken', response.data.auth_token);
-          refreshUserData()
-          navigate('/home')
+          localStorage.setItem("authToken", response.data.auth_token);
+          refreshUserData();
+          navigate("/home");
+        } else {
+          setIsLogin(false)
         }
-        console.log(response)
-        
+        console.log(response);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setIsLogin(false)
+        console.log(isLogin)
+        console.log(error)
+      });
     setUsername("");
     setPassword("");
   };
@@ -62,6 +68,11 @@ const Welcome = () => {
             />
           </div>
         </div>
+        {isLogin === false && 
+          <div className="error-msg-container">
+            <p>Can't login</p>
+          </div>
+        }
         <button type="submit" className="form-btn">
           Log In
         </button>

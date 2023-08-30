@@ -1,3 +1,13 @@
+.form-container {
+  text-align: center;
+}
+
 .login-element {
   margin-top: 15px;
+}
+
+.error-msg-container {
+  margin-top: 10px;
+  font-weight: bold;
+  color: red;
 }

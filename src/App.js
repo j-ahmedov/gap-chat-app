@@ -22,7 +22,6 @@ function App() {
     axios.get(`${requestParams.url_template}/parse-token/`, {headers})
     .then(response => {
       setUserData(response.data)
-      console.log(response.data)
     })
     .catch(error => {
       console.log(error.response)

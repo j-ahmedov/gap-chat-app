@@ -15,8 +15,6 @@ const Navbar = () => {
     navigate("/");
   };
 
-  console.log(userData)
-
   return (
     <div className="navbar">
       <div>
