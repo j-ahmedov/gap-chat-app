@@ -8,6 +8,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { requestParams } from "./constants/request_params";
 import { UserContext } from './components/context/UserContext';
+import PostAdd from './pages/post-add/PostAdd';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
           <Route path='/' element={<Welcome />} />
           <Route path='/sign-up' element={<Register />} />
           <Route path='/home' element={WithNavbar(Main)} />
+          <Route path='/post-add' element={WithNavbar(PostAdd)} />
           <Route path='*' element={<h1>PAGE NOT FOUND</h1>} />
         </Routes>
       </Router>

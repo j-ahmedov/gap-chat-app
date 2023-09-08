@@ -30,7 +30,7 @@ const Navbar = () => {
         <Link to="/home">
           <i className="fa-solid fa-house fa-xl"></i>
         </Link>
-        <Link to="/add">
+        <Link to="/post-add">
           <i className="fa-regular fa-square-plus fa-xl"></i>
         </Link>
         <div className="user-container">
