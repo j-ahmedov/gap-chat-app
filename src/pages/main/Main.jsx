@@ -23,8 +23,11 @@ const Main = () => {
   }, []);
 
   const getPosts = () => {
+    
     axios
-      .get(`${requestParams.api_template}/post/list/`)
+      .get(`${requestParams.api_template}/post/list/`, {
+        headers: { Authorization: `Token ${tokenItem}` },
+      })
       .then((response) => {
         setIsLoading(false)
         setPostList(response.data);

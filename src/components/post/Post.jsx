@@ -32,7 +32,7 @@ const Post = ({post}) => {
       </div>
       <div className="post-icons-container">
         <div style={{ display: "flex", gap: "10px" }}>
-          <i className="fa-regular fa-heart fa-xl"></i>
+          {post.user_liked ? <i class="fa-solid fa-heart fa-xl"></i> : <i className="fa-regular fa-heart fa-xl"></i>}
           <i className="fa-regular fa-comment fa-xl"></i>
           <i className="fa-regular fa-paper-plane fa-xl"></i>
         </div>
